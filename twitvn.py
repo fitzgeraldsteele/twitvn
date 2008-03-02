@@ -20,6 +20,7 @@ import svn.repos
 import svn.fs
 import svn.core
 
+name = 'twitvn'
 version = '0.1a'
 
 class TwitHTTP:
@@ -38,7 +39,7 @@ class TwitHTTP:
                 twitAuth.add_password(None, 'twitter.com', self.__username, self.__password)
                 # install the auth handler built from the HTTPPasswordMgrWithDefaultRealm password manager
                 install_opener(build_opener(HTTPBasicAuthHandler(twitAuth)))
-                data = urllib.urlencode({'status' : message})
+                data = urllib.urlencode({'status' : message, 'source' : name})
                 try:
                         urlopen(req, data)
                 except IOError, e:
