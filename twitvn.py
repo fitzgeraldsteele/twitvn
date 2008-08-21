@@ -56,11 +56,21 @@ class SVNHelper:
                 self.author = svn.fs.revision_prop(fs_ptr, revision, svn.core.SVN_PROP_REVISION_AUTHOR, pool)
 
 
-def generateTwitter(author, revision, comment, domain):
-        trimLength = 140 - (len(author)+1) - len(domain) - len('/changeset/') - len(str(revision)) - 5
-        if len(comment) > trimLength:
-                comment = comment[0:trimLength].rstrip(' ') + '...'
-        return '%s: %s %s/changeset/%s' % (author, comment, domain, revision)
+def generateTwitter(author, revision, comment, domain=''):
+
+	tweet = ''
+	tracurl = ''
+	trimLength = 140 - (len(author)+1) - 5
+
+	# if there's a trac domain, count that as well
+	if domain:
+		tracurl = '/'.join([domain,'changeset',str(revision)])
+		trimLength -= len(tracurl)
+
+	if len(comment) > trimLength:
+		comment = comment[0:trimLength].rstrip(' ') + '...'
+	tweet = '%s: %s %s' % (author, comment, tracurl)
+	return tweet
 
 def main(pool, options):
         svnHelper = SVNHelper(options.PATH, options.REVISION, pool)
@@ -108,7 +118,7 @@ if __name__ == '__main__':
         if options.REVISION is None:
                 parser.error('subversion revision must be set')
 
-        if options.DOMAIN is None:
-                parser.error('Trac Domain Name must be set')
+#        if options.DOMAIN is None:
+#                parser.error('Trac Domain Name must be set')
 
         svn.core.run_app(main, options=options)
