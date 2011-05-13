@@ -24,8 +24,8 @@ import tweepy
 name = 'twitvn'
 version = '2.0'
 
-CONSUMER_KEY = 'Ck4MU5UrHqKvHpl9fLhCzw'
-CONSUMER_SECRET = 'F0uhzfE58VdSuZhqgEkFknFQCdDDFKapYKL8C9LCJU'
+CONSUMER_KEY = 'Enter consumer key here'
+CONSUMER_SECRET = 'Enter consumer secret here'
 ACCESS_KEY = 'Enter access key here'
 ACCESS_SECRET = 'Enter access secret here'
 

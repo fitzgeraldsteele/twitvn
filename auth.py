@@ -2,8 +2,8 @@
 
 import tweepy
 
-CONSUMER_KEY = 'Ck4MU5UrHqKvHpl9fLhCzw'
-CONSUMER_SECRET = 'F0uhzfE58VdSuZhqgEkFknFQCdDDFKapYKL8C9LCJU'
+CONSUMER_KEY = 'Enter consumer key here'
+CONSUMER_SECRET = 'Enter consumer secret here'
 
 # Authorize TwitVN with a Twitter account 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
