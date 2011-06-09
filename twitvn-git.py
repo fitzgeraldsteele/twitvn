@@ -41,7 +41,7 @@ class TwitOAuth:
 		api.update_status(self.__tweet)
 
 class GITHelper:
-	"This class interacts with SVN for us"
+	"This class interacts with GIT for us"
 	def __init__(self, path):
 		repo = git.Repo(path)
 		headcommit = repo.head.commit
